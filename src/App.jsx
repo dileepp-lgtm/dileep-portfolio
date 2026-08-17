@@ -32,8 +32,12 @@ export default function App() {
   const openDeck = useCallback((key, cols) => setDeck({ key, cols }), []);
   const closeDeck = useCallback(() => setDeck(null), []);
 
-  /* mount the canvas effects once the DOM exists */
+  /* mount the canvas effects once the DOM exists.
+     These are pointer-driven (a hover grid + a fluid cursor). On touch /
+     mobile they add nothing but cost — the fluid sim is a full-viewport WebGL
+     canvas that tanks performance — so skip them unless a real mouse is present. */
   useEffect(() => {
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     const hero = document.getElementById('home');
     let grid = null, splash = null;
     if (hero && window.CursorGrid) {
@@ -58,8 +62,10 @@ export default function App() {
     };
   }, []);
 
-  /* BorderGlow needs the cards in the DOM, so run it after the gallery paints */
+  /* BorderGlow needs the cards in the DOM, so run it after the gallery paints.
+     It tracks the cursor across every card, so it's a no-op on touch — skip it. */
   useEffect(() => {
+    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
     if (!window.BorderGlow) return;
     const glow = window.BorderGlow.init('.dcard, .acard, .vcard, .agent-panel');
     return () => { if (glow && glow.destroy) glow.destroy(); };

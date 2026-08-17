@@ -882,3 +882,80 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   .vid-grid .vcard,.vid-grid .vcard.wide{grid-column:span 1}
   .scroll-cue{display:none}
 }
+
+/* ============================================================
+   Mobile pass — phone-first refinements (appended last so these
+   win on specificity ties). Fixes the hero clipping, stacks CTAs,
+   and tightens spacing / type for small screens.
+   ============================================================ */
+@media(max-width:640px){
+  /* --- hero: anchor copy to the top so the headline + sub are never
+     pushed off-screen (the old 100vh + vertical-center clipped them),
+     and use svh so the iOS address bar doesn't crop the section --- */
+  .hero2{
+    min-height:88vh;            /* fallback for browsers without svh */
+    min-height:100svh;
+    align-items:flex-start;
+    padding-top:calc(var(--nav-h) + 24px);
+    padding-bottom:44px;
+  }
+  /* darker veil keeps every line legible over the portrait's bright shirt */
+  .hero2.has-photo .hero-veil{
+    background:linear-gradient(180deg,
+      rgba(4,7,15,.55) 0%, rgba(4,7,15,.72) 46%, rgba(4,7,15,.96) 100%);
+  }
+  .hero2 h1{font-size:clamp(33px,9vw,46px);line-height:1.1}
+  .hero-name{margin-bottom:16px;font-size:12.5px;letter-spacing:.12em}
+  .hero-sub{font-size:16px;margin-bottom:22px}
+  .hero-facts{gap:8px 16px;margin-bottom:22px;font-size:14px}
+  .hero-badges{margin-bottom:26px}
+  /* full-width, stacked CTAs are far easier to tap than wrapped pills */
+  .hero2.has-photo .hero-cta{flex-direction:column;align-items:stretch;width:100%;gap:12px}
+  .hero-cta .btn{width:100%;justify-content:center;padding:15px 24px}
+
+  /* --- rhythm & spacing --- */
+  .wrap{padding:0 18px}
+  section{padding:60px 0}
+  .project{padding:52px 0}
+  .sec-title{margin-bottom:14px}
+  .sec-lead{font-size:16.5px;margin-bottom:34px}
+  .eyebrow{margin-bottom:14px}
+
+  /* --- about / timeline --- */
+  .about-grid{gap:32px}
+  .about-grid p{font-size:16.5px}
+  .stat .num{font-size:clamp(32px,11vw,44px)}
+
+  /* --- expertise & tools read better 2-up than as a single lonely column --- */
+  .exp-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .exp{padding:18px 16px;font-size:15px}
+  .tools-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+
+  /* --- contact --- */
+  .contact{padding:80px 0}
+  .contact .lead{font-size:16.5px}
+  .contact-links{flex-direction:column}
+  .c-link{justify-content:center}
+
+  /* --- deck viewer bar: keep the title from crowding the counter/close --- */
+  .dv-bar{height:52px;padding:0 14px;gap:12px}
+  .dv-bar .dvt{font-size:14px}
+
+  /* --- footer stacks cleanly --- */
+  footer .wrap{flex-direction:column;text-align:center;gap:8px}
+
+  /* --- larger tap targets for gallery filter pills --- */
+  .gfilter{padding:9px 15px}
+
+  /* nav: drop the redundant "Send Inquiry" pill (Contact is in the menu),
+     leaving brand · theme · burger with room to breathe */
+  .nav .nav-right .btn-primary{display:none}
+  .nav-right{gap:10px}
+}
+
+/* very small phones (≈360px and below) */
+@media(max-width:380px){
+  .exp-grid,.tools-grid{grid-template-columns:1fr}
+  .hero2 h1{font-size:30px}
+  .brand{font-size:16px}
+}
