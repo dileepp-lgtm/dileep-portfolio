@@ -979,9 +979,12 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 }
 
 /* ---- Work cover: React Bits ImageTrail behind the page title ---- */
+/* first fold sits a touch lighter than the pure-black gallery below it */
 .work-cover{position:relative;isolation:isolate;overflow:hidden;
   height:clamp(430px,58vh,580px);
-  background:radial-gradient(120% 90% at 50% 25%,var(--bg-soft),var(--bg) 78%)}
+  background:radial-gradient(130% 100% at 50% 18%,
+    var(--bg-soft),
+    color-mix(in srgb, var(--bg-soft) 62%, var(--bg)) 100%)}
 /* the trail fills the cover; isolate keeps its internal z-index:100 from
    competing with the fixed nav */
 .work-cover__trail{position:absolute;inset:0;z-index:1;isolation:isolate}
