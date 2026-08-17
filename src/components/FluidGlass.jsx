@@ -25,7 +25,7 @@ const IMAGES = [
   '/assets/img/brand-cover.jpg'
 ];
 
-export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {}, cubeProps = {} }) {
+export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {}, cubeProps = {}, pages = 3 }) {
   const Wrapper = mode === 'bar' ? Bar : mode === 'cube' ? Cube : Lens;
   const rawOverrides = mode === 'bar' ? barProps : mode === 'cube' ? cubeProps : lensProps;
 
@@ -40,7 +40,7 @@ export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {
 
   return (
     <Canvas camera={{ position: [0, 0, 20], fov: 15 }} gl={{ alpha: true }}>
-      <ScrollControls damping={0.2} pages={3} distance={0.4}>
+      <ScrollControls damping={0.2} pages={pages} distance={0.4}>
         {mode === 'bar' && <NavItems items={navItems} />}
         <Wrapper modeProps={modeProps}>
           <Scroll>
