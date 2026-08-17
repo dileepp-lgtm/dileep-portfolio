@@ -21,7 +21,7 @@ export default function Work({ onOpenDeck, hideHeader = false, hideFilters = fal
   };
 
   return (
-    <section id="work" style={{ paddingTop: 0, paddingBottom: 0 }}>
+    <section id="work" style={{ paddingBottom: 0 }}>
       {!hideHeader && (
         <div className="wrap">
           <div className="reveal">
