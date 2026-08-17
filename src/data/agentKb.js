@@ -79,7 +79,7 @@ export const AGENT_KB = {
       a:"Six fintech products at Open: <strong>Open Money</strong> (SME banking), <strong>Zwitch</strong> (embedded finance), <strong>Open Capital</strong> (business credit), <strong>Open Books</strong> (accounting), <strong>Open Accountant</strong> and <strong>Optotax</strong> (tax filing)." },
 
     { k:["best work","portfolio","show","case study","project","examples","see work"],
-      a:"Scroll to <a href=\"#work\">Selected Work</a> — it's grouped by discipline, and every cover opens full screen so you can scroll the whole set. Highlights: the IPL campaigns with <strong>KKR</strong>, <strong>Sunrisers Hyderabad</strong> and <strong>RCB</strong>, the Zwitch and HDFC/HSBC/SBI decks, and the Wrogn brand campaign." },
+      a:"Head to <a href=\"/work\">Selected Work</a> — it's grouped by discipline, and every cover opens full screen so you can scroll the whole set. Highlights: the IPL campaigns with <strong>KKR</strong>, <strong>Sunrisers Hyderabad</strong> and <strong>RCB</strong>, the Zwitch and HDFC/HSBC/SBI decks, and the Wrogn brand campaign." },
 
     { k:["ipl","cricket","kkr","srh","sunrisers","rcb","sponsor","hoarding","billboard","outdoor"],
       a:"Open was <strong>official digital banking partner</strong> for KKR, Sunrisers Hyderabad and RCB. Dileep designed the hoardings, standees, newspaper full-pagers and social creatives for those campaigns — see the <em>Outdoor</em> and <em>Print</em> sections." },

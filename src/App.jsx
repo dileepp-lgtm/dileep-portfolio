@@ -1,17 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
+import { Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Nav from './components/Nav.jsx';
-import Hero from './components/Hero.jsx';
-import About from './components/About.jsx';
-import Experience from './components/Experience.jsx';
-import Work from './components/Work.jsx';
-import Expertise from './components/Expertise.jsx';
-import Process from './components/Process.jsx';
-import Tools from './components/Tools.jsx';
-import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import DeckViewer from './components/DeckViewer.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
 import Agent from './components/Agent.jsx';
+import Home from './pages/Home.jsx';
+import AboutPage from './pages/About.jsx';
+import WorkPage from './pages/Work.jsx';
+import ContactPage from './pages/Contact.jsx';
 import { useTheme } from './hooks/useTheme.js';
 import { useReveal } from './hooks/useReveal.js';
 import { useScrollUi } from './hooks/useScrollUi.js';
@@ -22,24 +19,44 @@ import './effects/cursor-grid.js';
 import './effects/border-glow.js';
 import './effects/splash-cursor.js';
 
+const hasMouse = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
+
 export default function App() {
   const { theme, toggle } = useTheme();
   const { scrolled, showTop } = useScrollUi();
   const [deck, setDeck] = useState(null);
+  const { pathname } = useLocation();
 
-  useReveal([deck]);          // re-arm reveals when the viewer closes
+  /* re-arm reveal animations whenever the page changes or the viewer closes */
+  useReveal([pathname, deck]);
 
   const openDeck = useCallback((key, cols) => setDeck({ key, cols }), []);
   const closeDeck = useCallback(() => setDeck(null), []);
 
-  /* mount the canvas effects once the DOM exists.
-     These are pointer-driven (a hover grid + a fluid cursor). On touch /
-     mobile they add nothing but cost — the fluid sim is a full-viewport WebGL
-     canvas that tanks performance — so skip them unless a real mouse is present. */
+  /* jump to the top on every navigation (each menu item is its own page) */
   useEffect(() => {
-    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+  }, [pathname]);
+
+  /* SplashCursor is a global full-viewport fluid overlay — mount it once.
+     Pointer-driven, so it's skipped entirely on touch devices. */
+  useEffect(() => {
+    if (!hasMouse() || !window.SplashCursor) return;
+    const splash = window.SplashCursor.mount({
+      RAINBOW_MODE: false, COLOR: '#2592F6', SIM_RESOLUTION: 128,
+      DYE_RESOLUTION: 1024, DENSITY_DISSIPATION: 4.2, VELOCITY_DISSIPATION: 2,
+      PRESSURE: 0.1, PRESSURE_ITERATIONS: 20, CURL: 3, SPLAT_RADIUS: 0.18,
+      SPLAT_FORCE: 6000, SHADING: true, zIndex: 50
+    });
+    return () => { if (splash && splash.destroy) splash.destroy(); };
+  }, []);
+
+  /* CursorGrid lives on the hero (Home only) and BorderGlow decorates the
+     cards — both depend on the current page's DOM, so re-init on navigation. */
+  useEffect(() => {
+    if (!hasMouse()) return;
+    let grid = null, glow = null;
     const hero = document.getElementById('home');
-    let grid = null, splash = null;
     if (hero && window.CursorGrid) {
       grid = window.CursorGrid.mount(hero, {
         cellSize: 70, color: '#7FC4FF', radius: 170, falloff: 'smooth',
@@ -48,28 +65,14 @@ export default function App() {
         clickPulse: true, pulseSpeed: 620
       });
     }
-    if (window.SplashCursor) {
-      splash = window.SplashCursor.mount({
-        RAINBOW_MODE: false, COLOR: '#2592F6', SIM_RESOLUTION: 128,
-        DYE_RESOLUTION: 1024, DENSITY_DISSIPATION: 4.2, VELOCITY_DISSIPATION: 2,
-        PRESSURE: 0.1, PRESSURE_ITERATIONS: 20, CURL: 3, SPLAT_RADIUS: 0.18,
-        SPLAT_FORCE: 6000, SHADING: true, zIndex: 50
-      });
+    if (window.BorderGlow) {
+      glow = window.BorderGlow.init('.dcard, .acard, .vcard, .agent-panel');
     }
     return () => {
       if (grid && grid.destroy) grid.destroy();
-      if (splash && splash.destroy) splash.destroy();
+      if (glow && glow.destroy) glow.destroy();
     };
-  }, []);
-
-  /* BorderGlow needs the cards in the DOM, so run it after the gallery paints.
-     It tracks the cursor across every card, so it's a no-op on touch — skip it. */
-  useEffect(() => {
-    if (!matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    if (!window.BorderGlow) return;
-    const glow = window.BorderGlow.init('.dcard, .acard, .vcard, .agent-panel');
-    return () => { if (glow && glow.destroy) glow.destroy(); };
-  }, []);
+  }, [pathname]);
 
   const toTop = () => {
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -80,18 +83,21 @@ export default function App() {
 
   return (
     <>
-      <a className="skip" href="#work">Skip to work</a>
+      <a className="skip" href="#main">Skip to content</a>
       <ScrollProgress />
 
       <Nav scrolled={scrolled} theme={theme} onToggleTheme={toggle} />
-      <Hero />
-      <About />
-      <Experience />
-      <Work onOpenDeck={openDeck} />
-      <Expertise />
-      <Process />
-      <Tools />
-      <Contact />
+
+      <main id="main">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/work" element={<WorkPage onOpenDeck={openDeck} />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </main>
+
       <Footer />
 
       <button className={'to-top' + (showTop ? ' show' : '')} type="button"

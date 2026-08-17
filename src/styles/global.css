@@ -959,3 +959,16 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   .hero2 h1{font-size:30px}
   .brand{font-size:16px}
 }
+
+/* ============================================================
+   Multi-page layout (Home / About / Work / Contact)
+   ============================================================ */
+/* inner pages start at the very top, so clear the fixed nav */
+.page{padding-top:var(--nav-h)}
+/* home "at a glance" stats laid out full-width instead of the 2-col
+   About sidebar grid */
+.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:40px 30px;margin-top:8px}
+@media(max-width:640px){
+  .stats-row{grid-template-columns:repeat(2,1fr);gap:30px 18px}
+}

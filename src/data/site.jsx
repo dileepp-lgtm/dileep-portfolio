@@ -14,12 +14,10 @@ export const PROFILE = {
 };
 
 export const NAV = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#experience', label: 'Experience' },
-  { href: '#work', label: 'Work' },
-  { href: '#process', label: 'Process' },
-  { href: '#contact', label: 'Contact' }
+  { to: '/', label: 'Home' },
+  { to: '/about', label: 'About' },
+  { to: '/work', label: 'Work' },
+  { to: '/contact', label: 'Contact' }
 ];
 
 export const ABOUT = [

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { PROFILE } from '../data/site.jsx';
 
 export default function Hero() {
@@ -21,13 +22,13 @@ export default function Hero() {
             <span className="pill b">Full-Time</span>
           </div>
           <div className="hero-cta reveal d3">
-            <a href="#work" className="btn btn-primary">View Work</a>
+            <Link to="/work" className="btn btn-primary">View Work</Link>
             <a href={PROFILE.resume} download className="btn btn-ghost">Download Resume</a>
-            <a href="#contact" className="btn btn-ghost">Contact Me</a>
+            <Link to="/contact" className="btn btn-ghost">Contact Me</Link>
           </div>
         </div>
       </div>
-      <a href="#about" className="scroll-cue" aria-label="Scroll down"><span className="m" />Scroll</a>
+      <Link to="/about" className="scroll-cue" aria-label="Go to About"><span className="m" />About</Link>
     </header>
   );
 }
