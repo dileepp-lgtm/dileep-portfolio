@@ -764,7 +764,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .project{padding:74px 0;border-top:1px solid var(--border)}
 /* first gallery section flows straight out of the cover — no divider line */
 .gallery-nav + .project{border-top:0}
-#work > .project:first-of-type{border-top:0}
+#work > .project:first-of-type{border-top:0;padding-top:48px}
 .project.hide{display:none}
 .project-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:34px;flex-wrap:wrap}
 .project-head .pt{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block}
@@ -987,9 +987,11 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .work-cover__trail{position:absolute;inset:0;z-index:1;isolation:isolate}
 /* the title sits above the flying images and lets the pointer through so the
    trail still tracks movement across the whole banner */
+/* content sits in the lower third so the empty space becomes the trail's
+   playground above the title, not dead space below the filters */
 .work-cover__title{position:absolute;inset:0;z-index:2;pointer-events:none;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:0 24px}
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  text-align:center;padding:0 24px clamp(40px,7vh,84px)}
 .work-cover__title .eyebrow{margin-bottom:14px}
 /* ~30% larger than the standard .sec-title (clamp(30,4.4vw,46)) */
 .work-cover__title .sec-title{font-size:clamp(39px,5.7vw,60px);margin-left:auto;margin-right:auto}
@@ -1002,6 +1004,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   width:100%;pointer-events:auto}
 @media(max-width:640px){
   .work-cover{height:clamp(420px,87vh,644px)}
-  .work-cover__title{padding:0 18px}
+  .work-cover__title{padding:0 18px clamp(28px,5vh,56px)}
   .gallery-nav--cover{margin-top:24px}
 }
