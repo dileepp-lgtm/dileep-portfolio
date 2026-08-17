@@ -4,11 +4,16 @@ import DeckCard from './DeckCard.jsx';
 import Motion from './Motion.jsx';
 import Agency from './Agency.jsx';
 
-export default function Work({ onOpenDeck, hideHeader = false }) {
-  const [cat, setCat] = useState('all');
+/* `cat` can be controlled from a parent (pass cat + onPick); otherwise the
+   component manages its own filter state. `hideFilters` drops the built-in
+   sticky filter bar (used when the parent renders its own). */
+export default function Work({ onOpenDeck, hideHeader = false, hideFilters = false, cat: catProp, onPick }) {
+  const [catState, setCatState] = useState('all');
+  const cat = catProp !== undefined ? catProp : catState;
 
   const pick = c => {
-    setCat(c);
+    if (onPick) return onPick(c);
+    setCatState(c);
     const el = document.getElementById('work');
     if (!el) return;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -30,17 +35,19 @@ export default function Work({ onOpenDeck, hideHeader = false }) {
         </div>
       )}
 
-      <div className="gallery-nav" role="group" aria-label="Filter work by discipline">
-        <div className="wrap">
-          {FILTERS.map(f => (
-            <button key={f.cat} type="button"
-                    className={'gfilter' + (cat === f.cat ? ' active' : '')}
-                    aria-pressed={cat === f.cat}
-                    onClick={() => pick(f.cat)}
-                    dangerouslySetInnerHTML={{ __html: f.label }} />
-          ))}
+      {!hideFilters && (
+        <div className="gallery-nav" role="group" aria-label="Filter work by discipline">
+          <div className="wrap">
+            {FILTERS.map(f => (
+              <button key={f.cat} type="button"
+                      className={'gfilter' + (cat === f.cat ? ' active' : '')}
+                      aria-pressed={cat === f.cat}
+                      onClick={() => pick(f.cat)}
+                      dangerouslySetInnerHTML={{ __html: f.label }} />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       {SECTIONS.map(s => {
         const hidden = !(cat === 'all' || cat === s.cat);

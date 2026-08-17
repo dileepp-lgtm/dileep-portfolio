@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import Work from '../components/Work.jsx';
 import ImageTrail from '../components/ImageTrail.jsx';
+import { FILTERS } from '../data/work.js';
 
 /* A curated set of Dileep's own covers (local assets — no hotlink issues) that
    trail behind the cursor across the Work page header. */
@@ -18,10 +20,18 @@ const TRAIL_IMAGES = [
   '/assets/img/car-cover.jpg'
 ];
 
-/* The full gallery — decks, agency covers and motion videos, with the
-   discipline filter. Opening a cover is handled by the shared DeckViewer
-   mounted in App, via the onOpenDeck handler passed down here. */
 export default function WorkPage({ onOpenDeck }) {
+  const [cat, setCat] = useState('all');
+
+  /* pick a discipline, then drop into the gallery to see the results */
+  const pick = c => {
+    setCat(c);
+    const el = document.getElementById('work');
+    if (!el) return;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: el.offsetTop - 130, behavior: reduce ? 'auto' : 'smooth' });
+  };
+
   return (
     <div className="page">
       <section className="work-cover" aria-label="Selected work">
@@ -29,15 +39,22 @@ export default function WorkPage({ onOpenDeck }) {
           <ImageTrail items={TRAIL_IMAGES} variant={1} />
         </div>
         <div className="work-cover__title">
-          <span className="eyebrow">Selected Work</span>
           <h1 className="sec-title">A gallery of the craft.</h1>
-          <p className="sec-lead">
-            Move your cursor across to reveal the work — then scroll for the full collection.
-          </p>
+          <div className="gallery-nav gallery-nav--cover" role="group" aria-label="Filter work by discipline">
+            <div className="wrap">
+              {FILTERS.map(f => (
+                <button key={f.cat} type="button"
+                        className={'gfilter' + (cat === f.cat ? ' active' : '')}
+                        aria-pressed={cat === f.cat}
+                        onClick={() => pick(f.cat)}
+                        dangerouslySetInnerHTML={{ __html: f.label }} />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <Work onOpenDeck={onOpenDeck} hideHeader />
+      <Work onOpenDeck={onOpenDeck} cat={cat} onPick={pick} hideHeader hideFilters />
     </div>
   );
 }

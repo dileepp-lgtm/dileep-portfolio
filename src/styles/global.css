@@ -762,8 +762,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .gfilter.active{background:var(--text);color:var(--bg);border-color:var(--text)}
 
 .project{padding:74px 0;border-top:1px solid var(--border)}
-/* no divider directly under the (border-less) filter bar */
+/* first gallery section flows straight out of the cover — no divider line */
 .gallery-nav + .project{border-top:0}
+#work > .project:first-of-type{border-top:0}
 .project.hide{display:none}
 .project-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:34px;flex-wrap:wrap}
 .project-head .pt{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block}
@@ -990,9 +991,17 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   display:flex;flex-direction:column;align-items:center;justify-content:center;
   text-align:center;padding:0 24px}
 .work-cover__title .eyebrow{margin-bottom:14px}
-.work-cover__title .sec-title{margin-left:auto;margin-right:auto}
+/* ~30% larger than the standard .sec-title (clamp(30,4.4vw,46)) */
+.work-cover__title .sec-title{font-size:clamp(39px,5.7vw,60px);margin-left:auto;margin-right:auto}
 .work-cover__title .sec-lead{margin:0 auto;max-width:520px}
+/* filter bar sitting inside the cover, directly under the title. The title
+   layer is pointer-events:none so the trail tracks the cursor — re-enable it
+   on the bar so the pills stay clickable. */
+.gallery-nav--cover{position:static;z-index:auto;background:transparent;
+  backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;margin-top:30px;
+  width:100%;pointer-events:auto}
 @media(max-width:640px){
   .work-cover{height:clamp(420px,87vh,644px)}
   .work-cover__title{padding:0 18px}
+  .gallery-nav--cover{margin-top:24px}
 }
