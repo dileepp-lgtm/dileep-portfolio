@@ -750,9 +750,11 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 
 /* gallery */
 .gallery-nav{position:sticky;top:var(--nav-h);z-index:40;background:color-mix(in srgb,var(--bg) 82%,transparent);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   padding:14px 0}
-.gallery-nav .wrap{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none}
+/* centered when the pills fit; falls back to start (scrollable) when they
+   overflow so the first pill is never clipped on narrow screens */
+.gallery-nav .wrap{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none;justify-content:safe center}
 .gallery-nav .wrap::-webkit-scrollbar{display:none}
 .gfilter{font-size:14px;font-weight:550;padding:8px 16px;border-radius:100px;border:1px solid var(--border);
   background:var(--bg-card);color:var(--text-soft);cursor:pointer;white-space:nowrap;transition:.2s}
@@ -760,6 +762,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .gfilter.active{background:var(--text);color:var(--bg);border-color:var(--text)}
 
 .project{padding:74px 0;border-top:1px solid var(--border)}
+/* no divider directly under the (border-less) filter bar */
+.gallery-nav + .project{border-top:0}
 .project.hide{display:none}
 .project-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:34px;flex-wrap:wrap}
 .project-head .pt{font-size:12.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:12px;display:block}
@@ -976,7 +980,6 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 /* ---- Work cover: React Bits ImageTrail behind the page title ---- */
 .work-cover{position:relative;isolation:isolate;overflow:hidden;
   height:clamp(476px,73vh,728px);
-  border-bottom:1px solid var(--border);
   background:radial-gradient(120% 90% at 50% 25%,var(--bg-soft),var(--bg) 78%)}
 /* the trail fills the cover; isolate keeps its internal z-index:100 from
    competing with the fixed nav */
