@@ -25,7 +25,19 @@ const IMAGES = [
   '/assets/img/brand-cover.jpg'
 ];
 
-export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {}, cubeProps = {}, pages = 3 }) {
+export default function FluidGlass({
+  mode = 'lens',
+  lensProps = {},
+  barProps = {},
+  cubeProps = {},
+  pages = 3,
+  background = '#5227ff',
+  text = 'Dileep P',
+  textColor = 'white',
+  textFontScale = 1,
+  textY = 0,
+  showImages = true
+}) {
   const Wrapper = mode === 'bar' ? Bar : mode === 'cube' ? Cube : Lens;
   const rawOverrides = mode === 'bar' ? barProps : mode === 'cube' ? cubeProps : lensProps;
 
@@ -42,10 +54,10 @@ export default function FluidGlass({ mode = 'lens', lensProps = {}, barProps = {
     <Canvas camera={{ position: [0, 0, 20], fov: 15 }} gl={{ alpha: true }}>
       <ScrollControls damping={0.2} pages={pages} distance={0.4}>
         {mode === 'bar' && <NavItems items={navItems} />}
-        <Wrapper modeProps={modeProps}>
+        <Wrapper modeProps={modeProps} background={background}>
           <Scroll>
-            <Typography />
-            <Images />
+            <Typography text={text} color={textColor} fontScale={textFontScale} y={textY} />
+            {showImages && <Images />}
           </Scroll>
           <Scroll html />
           <Preload />
@@ -62,6 +74,7 @@ const ModeWrapper = memo(function ModeWrapper({
   lockToBottom = false,
   followPointer = true,
   modeProps = {},
+  background = '#5227ff',
   ...props
 }) {
   const ref = useRef();
@@ -96,7 +109,7 @@ const ModeWrapper = memo(function ModeWrapper({
     gl.setRenderTarget(null);
 
     // Background Color
-    gl.setClearColor(0x5227ff, 1);
+    gl.setClearColor(background, 1);
   });
 
   const { scale, ior, thickness, anisotropy, chromaticAberration, ...extraMat } = modeProps;
@@ -247,7 +260,7 @@ function Images() {
   );
 }
 
-function Typography() {
+function Typography({ text = 'Dileep P', color = 'white', fontScale = 1, y = 0 }) {
   const DEVICE = {
     mobile: { fontSize: 0.2 },
     tablet: { fontSize: 0.4 },
@@ -270,18 +283,19 @@ function Typography() {
 
   return (
     <Text
-      position={[0, 0, 12]}
-      fontSize={fontSize}
+      position={[0, y, 12]}
+      fontSize={fontSize * fontScale}
+      maxWidth={100}
       letterSpacing={-0.05}
       outlineWidth={0}
       outlineBlur="20%"
       outlineColor="#000"
       outlineOpacity={0.5}
-      color="white"
+      color={color}
       anchorX="center"
       anchorY="middle"
     >
-      Dileep P
+      {text}
     </Text>
   );
 }

@@ -19,11 +19,8 @@ export default function WorkPage({ onOpenDeck }) {
     <div className="page">
       <section className="work-cover" aria-label="Selected work">
         <FluidGlassCover />
-      </section>
-
-      <div className="work-intro">
-        <h2 className="sec-title">A gallery of the craft.</h2>
-        <div className="gallery-nav gallery-nav--cover" role="group" aria-label="Filter work by discipline">
+        <div className="work-cover__filters gallery-nav gallery-nav--cover"
+             role="group" aria-label="Filter work by discipline">
           <div className="wrap">
             {FILTERS.map(f => (
               <button key={f.cat} type="button"
@@ -34,7 +31,7 @@ export default function WorkPage({ onOpenDeck }) {
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
       <Work onOpenDeck={onOpenDeck} cat={cat} onPick={pick} hideHeader hideFilters />
     </div>
