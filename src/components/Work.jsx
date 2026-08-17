@@ -4,7 +4,7 @@ import DeckCard from './DeckCard.jsx';
 import Motion from './Motion.jsx';
 import Agency from './Agency.jsx';
 
-export default function Work({ onOpenDeck }) {
+export default function Work({ onOpenDeck, hideHeader = false }) {
   const [cat, setCat] = useState('all');
 
   const pick = c => {
@@ -17,16 +17,18 @@ export default function Work({ onOpenDeck }) {
 
   return (
     <section id="work" style={{ paddingBottom: 0 }}>
-      <div className="wrap">
-        <div className="reveal">
-          <span className="eyebrow">Selected Work</span>
-          <h2 className="sec-title">A gallery of the craft.</h2>
-          <p className="sec-lead">
-            Organized by discipline and product. Click any cover to open the full set
-            full screen and scroll through every page.
-          </p>
+      {!hideHeader && (
+        <div className="wrap">
+          <div className="reveal">
+            <span className="eyebrow">Selected Work</span>
+            <h2 className="sec-title">A gallery of the craft.</h2>
+            <p className="sec-lead">
+              Organized by discipline and product. Click any cover to open the full set
+              full screen and scroll through every page.
+            </p>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="gallery-nav" role="group" aria-label="Filter work by discipline">
         <div className="wrap">

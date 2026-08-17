@@ -972,3 +972,24 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 @media(max-width:640px){
   .stats-row{grid-template-columns:repeat(2,1fr);gap:30px 18px}
 }
+
+/* ---- Work cover: React Bits ImageTrail behind the page title ---- */
+.work-cover{position:relative;isolation:isolate;overflow:hidden;
+  height:clamp(340px,52vh,520px);
+  border-bottom:1px solid var(--border);
+  background:radial-gradient(120% 90% at 50% 25%,var(--bg-soft),var(--bg) 78%)}
+/* the trail fills the cover; isolate keeps its internal z-index:100 from
+   competing with the fixed nav */
+.work-cover__trail{position:absolute;inset:0;z-index:1;isolation:isolate}
+/* the title sits above the flying images and lets the pointer through so the
+   trail still tracks movement across the whole banner */
+.work-cover__title{position:absolute;inset:0;z-index:2;pointer-events:none;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:0 24px}
+.work-cover__title .eyebrow{margin-bottom:14px}
+.work-cover__title .sec-title{margin-left:auto;margin-right:auto}
+.work-cover__title .sec-lead{margin:0 auto;max-width:520px}
+@media(max-width:640px){
+  .work-cover{height:clamp(300px,62vh,460px)}
+  .work-cover__title{padding:0 18px}
+}
