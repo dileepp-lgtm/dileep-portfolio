@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Work from '../components/Work.jsx';
 import ImageTrail from '../components/ImageTrail.jsx';
+import FluidGlassSection from '../components/FluidGlassSection.jsx';
 import { FILTERS } from '../data/work.js';
 
 /* A curated set of Dileep's own covers (local assets — no hotlink issues) that
@@ -55,6 +56,8 @@ export default function WorkPage({ onOpenDeck }) {
       </section>
 
       <Work onOpenDeck={onOpenDeck} cat={cat} onPick={pick} hideHeader hideFilters />
+
+      <FluidGlassSection />
     </div>
   );
 }

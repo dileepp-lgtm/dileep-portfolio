@@ -1005,3 +1005,11 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   .work-cover__title{padding:0 18px}
   .gallery-nav--cover{margin-top:24px}
 }
+
+/* ---- React Bits FluidGlass showcase (closing section of the Work page) ---- */
+.fluid-showcase{position:relative;width:100%;height:100vh;min-height:560px;
+  overflow:hidden;background:#5227ff;margin-top:80px}
+.fluid-showcase canvas{display:block;width:100%;height:100%}
+.fluid-showcase__fallback{position:absolute;inset:0;display:grid;place-items:center;
+  background:radial-gradient(circle at 50% 38%,#6a3cff,#3a17c8);color:#fff}
+.fluid-showcase__fallback span{font-size:clamp(44px,12vw,96px);font-weight:700;letter-spacing:-.03em}
