@@ -15,7 +15,7 @@ export default function Agency({ section, hidden }) {
         <div className="agency-grid reveal">
           {AGENCY.map(a => (
             <a className="acard" href={a.href} target="_blank" rel="noopener" key={a.href}>
-              <div className="am"><img src={a.img} alt={a.alt} loading="lazy" /></div>
+              <div className="am"><img src={a.img} alt={a.alt} loading="lazy" referrerPolicy="no-referrer" /></div>
               <div className="ab">
                 <span className="t">{a.title}</span>
                 <span className="c">{a.sub}</span>
