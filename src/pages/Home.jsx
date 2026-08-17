@@ -1,15 +1,19 @@
 import { Link } from 'react-router-dom';
 import Hero from '../components/Hero.jsx';
 import Counter from '../components/Counter.jsx';
+import Expertise from '../components/Expertise.jsx';
+import Process from '../components/Process.jsx';
+import Tools from '../components/Tools.jsx';
 import { STATS } from '../data/site.jsx';
 
-/* Landing page: the full-screen hero plus a short "at a glance" band that
-   gives the home page substance and routes visitors on to Work / About. */
+/* Landing page: the full-screen hero, a short "at a glance" band, then the
+   expertise / process / tools sections so the home page carries real weight
+   and routes visitors on to Work / About. */
 export default function Home() {
   return (
     <>
       <Hero />
-      <section className="soft" id="highlights">
+      <section id="highlights">
         <div className="wrap">
           <div className="reveal">
             <span className="eyebrow">At a glance</span>
@@ -33,6 +37,10 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <Expertise />
+      <Process />
+      <Tools />
     </>
   );
 }
