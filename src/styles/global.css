@@ -917,6 +917,10 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     background-repeat:no-repeat;
     /* move the portrait down so the head has room (never cropped) */
     background-position:50% 16%;
+    /* fade the photo's top edge into the background so no seam/band shows above
+       the head (head sits well below this, so it isn't affected) */
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 15%);
+    mask-image:linear-gradient(180deg, transparent 0, #000 15%);
   }
   .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
   .hero2.has-photo .hero-copy{ margin-top:44svh; }
