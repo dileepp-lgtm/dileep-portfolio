@@ -869,7 +869,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 
 @media(max-width:900px){
   /* photo moves behind the copy; text goes left-aligned for readability */
-  .hero-photo{background-image:url("/assets/img/hero-m2.jpg");background-position:28% center}
+  .hero-photo{background-image:url("/assets/img/Mobile.jpg");background-position:28% center}
   .hero-veil{background:linear-gradient(180deg,rgba(4,7,15,.45) 0%,rgba(4,7,15,.55) 38%,rgba(4,7,15,.93) 100%)}
   .hero2.has-photo .wrap{justify-content:flex-start}
   .hero-copy{max-width:none;text-align:left;align-items:flex-start}
@@ -913,12 +913,14 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
      little air above so the head is never cut; copy starts below the face. */
   .hero2.has-photo .hero-photo{
     transform:none;
-    background-size:contain;
+    /* Mobile.jpg is a full phone-ratio portrait on black — pin it to the first
+       screen and fill full-bleed, so the subject is framed as shot; head
+       emerges cleanly from the dark background, no mask needed. */
+    inset:0 0 auto 0;
+    height:100svh;
+    background-size:cover;
     background-repeat:no-repeat;
-    /* hero-m2.jpg has the top faded to black baked in (removes the old blue
-       rim-light band above the head), so the head emerges cleanly from the
-       dark page background — no mask needed, nothing to clip. */
-    background-position:50% 14%;
+    background-position:50% top;
   }
   .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
   .hero2.has-photo .hero-copy{ margin-top:44svh; }
