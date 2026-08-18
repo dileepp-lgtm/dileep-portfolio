@@ -912,10 +912,11 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   /* home hero (mobile): the whole portrait shows (contain), nudged down with a
      little air above so the head is never cut; copy starts below the face. */
   .hero2.has-photo .hero-photo{
-    transform:none;
     /* Mobile.jpg is a full phone-ratio portrait on black — pin it to the first
        screen and fill full-bleed, so the subject is framed as shot; head
-       emerges cleanly from the dark background, no mask needed. */
+       emerges cleanly from the dark background, no mask needed. Nudged up 30%
+       so the subject sits higher on the first screen. */
+    transform:translateY(-14%);
     inset:0 0 auto 0;
     height:100svh;
     background-size:cover;
