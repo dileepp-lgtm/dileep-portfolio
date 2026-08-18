@@ -38,9 +38,13 @@ export function createLiquidGlass(container) {
     const h = renderer.domElement.height;
     bgCanvas.width = w;
     bgCanvas.height = h;
+    /* deep purple → blue radial gradient (matches the site's heading gradient),
+       kept dark so the cover stays moody; the glass blobs refract this, so the
+       bubbles pick up the purple/blue shades */
     const grd = bgCtx.createRadialGradient(w * 0.5, h * 0.18, 0, w * 0.5, h * 0.18, Math.max(w, h) * 1.1);
-    grd.addColorStop(0, '#1d1d1f');
-    grd.addColorStop(1, '#121213');
+    grd.addColorStop(0, '#241a52');   /* indigo/purple core */
+    grd.addColorStop(0.55, '#141a4a'); /* blue-violet */
+    grd.addColorStop(1, '#0a0e28');   /* deep blue-black edge */
     bgCtx.fillStyle = grd;
     bgCtx.fillRect(0, 0, w, h);
     bgTexture.needsUpdate = true;
@@ -127,11 +131,13 @@ void main(){
   bgCA.g = texture2D(uBg, refractedUV).g;
   bgCA.b = texture2D(uBg, refractedUV - vec2(caStr, caStr * 0.5)).b;
   float depth = smoothstep(thr, thr + 3.0, field);
-  vec3 tint = mix(vec3(1.0), vec3(0.93, 0.96, 1.0), depth * 0.45);
+  /* deeper blobs lean into a purple→blue tint; edges pick up a blue-violet
+     fresnel glow so the bubbles clearly read purple/blue */
+  vec3 tint = mix(vec3(0.78, 0.72, 1.0), vec3(0.55, 0.62, 1.0), depth * 0.6);
   vec3 glassColor = bgCA * tint * (0.92 + 0.08 * diff)
                   + vec3(1.0) * spec * 0.85
-                  + vec3(0.9, 0.95, 1.0) * rim * 0.22
-                  + vec3(1.0) * fresnel * 0.10;
+                  + vec3(0.66, 0.72, 1.0) * rim * 0.30
+                  + vec3(0.62, 0.55, 1.0) * fresnel * 0.22;
   float shadowField = smoothstep(thr - 0.35, thr - 0.05, field);
   vec3 bg = bgClean * (1.0 - shadowField * 0.06);
   float borderOuter = smoothstep(thr - 0.10, thr - 0.01, field);
