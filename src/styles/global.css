@@ -916,6 +916,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     background-size:contain;
     background-repeat:no-repeat;
     background-position:50% 14%;
+    /* fade the photo's top edge into the background so no patch shows above the head */
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 22%);
+    mask-image:linear-gradient(180deg, transparent 0, #000 22%);
   }
   .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
   .hero2.has-photo .hero-copy{ margin-top:44svh; }
