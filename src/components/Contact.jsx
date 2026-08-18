@@ -1,10 +1,12 @@
 import { PROFILE } from '../data/site.jsx';
+import ContactOrb from './ContactOrb.jsx';
 
 const Icon = ({ children }) => <svg viewBox="0 0 24 24" aria-hidden="true">{children}</svg>;
 
 export default function Contact() {
   return (
     <section id="contact" className="contact">
+      <div className="contact-orb" aria-hidden="true"><ContactOrb /></div>
       <div className="wrap">
         <div className="reveal">
           <span className="eyebrow">Contact</span>

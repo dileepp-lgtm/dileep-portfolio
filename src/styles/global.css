@@ -244,7 +244,10 @@ h1,h2,h3,h4{line-height:1.08;letter-spacing:-.03em;font-weight:650}
 .tool .name{font-size:14.5px;font-weight:550}
 
 /* ---------- contact ---------- */
-.contact{text-align:center;padding:120px 0}
+.contact{text-align:center;padding:120px 0;position:relative;overflow:hidden;isolation:isolate}
+/* React Bits Orb as the contact background; sits behind the copy, never eats clicks */
+.contact-orb{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.85}
+.contact .wrap{position:relative;z-index:1}
 .contact h2{font-size:clamp(36px,6vw,68px);letter-spacing:-.04em;max-width:900px;margin:0 auto calc(26px - var(--desc-fix))}
 .contact .lead{font-size:19px;color:var(--text-soft);max-width:560px;margin:0 auto 40px}
 .contact-links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
