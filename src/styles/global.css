@@ -925,8 +925,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
      "Vivid … roaring." reads over the light table behind it */
   .hero2.has-photo .hero-veil{
     background:linear-gradient(180deg,
-      rgba(4,7,15,0) 0%, rgba(4,7,15,0) 35%,
-      rgba(4,7,15,.6) 42%, rgba(4,7,15,.95) 51%, rgba(4,7,15,1) 100%);
+      rgba(4,7,15,0) 0%, rgba(4,7,15,0) 33%,
+      rgba(4,7,15,.78) 40%, rgba(4,7,15,1) 47%, rgba(4,7,15,1) 100%);
   }
   /* eyebrow aligns left like the rest of the copy */
   .hero2.has-photo .hero-name{ justify-content:flex-start; align-self:flex-start; }
