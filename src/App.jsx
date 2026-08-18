@@ -19,10 +19,13 @@ import './effects/cursor-grid.js';
 import './effects/border-glow.js';
 import './effects/splash-cursor.js';
 
-/* only run the pointer-driven canvas effects on a real desktop pointer + roomy
-   viewport — on mobile they're pure cost and the heavy fluid sim stalls the
-   reveal animations */
+/* the hover-only decorations (hero grid, card border-glow) need a real desktop
+   pointer + roomy viewport */
 const hasMouse = () => matchMedia('(hover: hover) and (pointer: fine) and (min-width: 900px)').matches;
+/* the fluid splash also works on touch (follows the finger), so it runs on
+   desktop pointers AND touch screens — reduced-motion still opts out */
+const isTouch = () => matchMedia('(pointer: coarse)').matches;
+const prefersReduce = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export default function App() {
   const { theme, toggle } = useTheme();
@@ -42,15 +45,24 @@ export default function App() {
   }, [pathname]);
 
   /* SplashCursor is a global full-viewport fluid overlay — mount it once.
-     Pointer-driven, so it's skipped entirely on touch devices. */
+     Runs on a desktop pointer or a touch screen (follows the finger). On touch
+     the sim is dialled down so it doesn't stall scrolling / reveal animations. */
   useEffect(() => {
-    if (!hasMouse() || !window.SplashCursor) return;
-    const splash = window.SplashCursor.mount({
+    if (!window.SplashCursor || prefersReduce()) return;
+    const mouse = hasMouse();
+    if (!mouse && !isTouch()) return;
+    const base = {
       RAINBOW_MODE: false, COLOR: '#2592F6', SIM_RESOLUTION: 128,
       DYE_RESOLUTION: 1024, DENSITY_DISSIPATION: 4.2, VELOCITY_DISSIPATION: 2,
       PRESSURE: 0.1, PRESSURE_ITERATIONS: 20, CURL: 3, SPLAT_RADIUS: 0.18,
       SPLAT_FORCE: 6000, SHADING: true, zIndex: 50
-    });
+    };
+    /* lighter fluid on touch: lower resolutions + faster fade keep it smooth */
+    const light = {
+      SIM_RESOLUTION: 64, DYE_RESOLUTION: 512, DENSITY_DISSIPATION: 5.5,
+      PRESSURE_ITERATIONS: 16, SPLAT_RADIUS: 0.22, SPLAT_FORCE: 7000
+    };
+    const splash = window.SplashCursor.mount(mouse ? base : { ...base, ...light });
     return () => { if (splash && splash.destroy) splash.destroy(); };
   }, []);
 

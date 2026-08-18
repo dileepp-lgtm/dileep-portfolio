@@ -14,8 +14,11 @@
 
   function mount(options) {
     var reduce = global.matchMedia && global.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var hasHover = !global.matchMedia || global.matchMedia('(hover: hover) and (pointer: fine)').matches;
-    if (reduce || !hasHover) return null;   // it's a cursor effect; skip touch-only devices
+    var finePointer = !global.matchMedia || global.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    var coarsePointer = global.matchMedia && global.matchMedia('(pointer: coarse)').matches;
+    // runs on a mouse (follows the cursor) or on touch (follows the finger via
+    // the touch handlers below); only truly pointer-less or reduced-motion opts out
+    if (reduce || (!finePointer && !coarsePointer)) return null;
 
     var o = Object.assign({
       SIM_RESOLUTION: 128,
