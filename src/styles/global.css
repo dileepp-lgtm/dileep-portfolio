@@ -239,6 +239,8 @@ h1,h2,h3,h4{line-height:1.08;letter-spacing:-.03em;font-weight:650}
 .tool:hover{transform:translateY(-3px);border-color:var(--accent)}
 .tool .ico{width:44px;height:44px;border-radius:11px;margin:0 auto 12px;display:grid;place-items:center;
   font-weight:700;font-size:17px;color:#fff}
+.tool .ico svg{width:26px;height:26px}
+.tool .ico img{width:64%;height:64%;object-fit:contain}
 .tool .name{font-size:14.5px;font-weight:550}
 
 /* ---------- contact ---------- */

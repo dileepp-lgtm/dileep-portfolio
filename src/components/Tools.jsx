@@ -11,7 +11,17 @@ export default function Tools() {
         <div className="tools-grid reveal">
           {TOOLS.map(t => (
             <div className="tool" key={t.name}>
-              <div className="ico" style={{ background: t.bg }}>{t.abbr}</div>
+              <div className="ico" style={{ background: t.bg }}>
+                {t.logo ? (
+                  <img src={t.logo} alt="" />
+                ) : t.svg ? (
+                  <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                    <path d={t.svg} />
+                  </svg>
+                ) : (
+                  t.abbr
+                )}
+              </div>
               <div className="name">{t.name}</div>
             </div>
           ))}
