@@ -917,12 +917,14 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     background-repeat:no-repeat;
     /* move the portrait down so the head has room (never cropped) */
     background-position:50% 16%;
-    /* fade the photo's top edge into the background so no seam/band shows above
-       the head (head sits well below this, so it isn't affected) */
-    -webkit-mask-image:linear-gradient(180deg, transparent 0, #000 15%);
-    mask-image:linear-gradient(180deg, transparent 0, #000 15%);
+    /* the photo has a blue-tinted band baked in just above the head; mask the
+       photo transparent up to just above the head so that band shows the black
+       page background instead of blue. Head (~15%) stays fully opaque. */
+    -webkit-mask-image:linear-gradient(180deg, transparent 0, transparent 14%, #000 15.5%);
+    mask-image:linear-gradient(180deg, transparent 0, transparent 14%, #000 15.5%);
   }
-  .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
+  /* black backing so the masked area above the head is pure black, not blue */
+  .hero2.has-photo{ padding-top:0; padding-bottom:36px; background:#000; }
   .hero2.has-photo .hero-copy{ margin-top:44svh; }
   /* clear over the face up top, then darken hard through the headline zone so
      "Vivid … roaring." reads over the light table behind it */
