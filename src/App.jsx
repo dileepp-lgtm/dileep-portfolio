@@ -19,7 +19,10 @@ import './effects/cursor-grid.js';
 import './effects/border-glow.js';
 import './effects/splash-cursor.js';
 
-const hasMouse = () => matchMedia('(hover: hover) and (pointer: fine)').matches;
+/* only run the pointer-driven canvas effects on a real desktop pointer + roomy
+   viewport — on mobile they're pure cost and the heavy fluid sim stalls the
+   reveal animations */
+const hasMouse = () => matchMedia('(hover: hover) and (pointer: fine) and (min-width: 900px)').matches;
 
 export default function App() {
   const { theme, toggle } = useTheme();

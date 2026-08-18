@@ -14,10 +14,13 @@ export function createLiquidGlass(container) {
   const MAX_CATCHUP = 6;
 
   const renderer = new THREE.WebGLRenderer({ antialias: false });
-  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio || 1));
+  /* soft metaballs don't need 2x; cap DPR to keep it light on mobile */
+  renderer.setPixelRatio(Math.min(1.5, window.devicePixelRatio || 1));
   const cw = () => Math.max(1, container.clientWidth);
   const ch = () => Math.max(1, container.clientHeight);
   renderer.setSize(cw(), ch());
+  /* let vertical page scroll pass through on touch */
+  renderer.domElement.style.touchAction = 'pan-y';
   container.appendChild(renderer.domElement);
 
   const scene = new THREE.Scene();
