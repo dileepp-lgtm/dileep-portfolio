@@ -981,7 +981,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 /* ---- Work cover: React Bits ImageTrail behind the page title ---- */
 /* first fold sits a touch lighter than the pure-black gallery below it */
 .work-cover{position:relative;isolation:isolate;overflow:hidden;
-  height:clamp(538px,72vh,725px);
+  height:clamp(646px,86vh,870px);
   background:radial-gradient(130% 100% at 50% 18%,
     var(--bg-soft),
     color-mix(in srgb, var(--bg-soft) 62%, var(--bg)) 100%)}
@@ -1011,7 +1011,7 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .gallery-nav--cover .wrap{flex-wrap:wrap;justify-content:center;overflow:visible;
   max-width:660px;margin:0 auto;row-gap:12px}
 @media(max-width:640px){
-  .work-cover{height:clamp(500px,90vh,700px)}
+  .work-cover{height:clamp(600px,100vh,840px)}
   .work-cover__title{padding:0 18px}
   .gallery-nav--cover{margin-top:22px}
   .gallery-nav--cover .wrap{max-width:340px}
