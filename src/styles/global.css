@@ -909,12 +909,13 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     padding-top:calc(var(--nav-h) + 24px);
     padding-bottom:44px;
   }
-  /* home hero (mobile): match the desktop treatment — cover + scale(.93) (from
-     the base rule) with the head anchored to the top, so the person fills the
-     frame prominently and uncut; copy starts below the face. */
+  /* home hero (mobile): the whole portrait shows (contain), nudged down with a
+     little air above so the head is never cut; copy starts below the face. */
   .hero2.has-photo .hero-photo{
-    background-size:cover;
-    background-position:50% top;
+    transform:none;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:50% 14%;
   }
   .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
   .hero2.has-photo .hero-copy{ margin-top:44svh; }
