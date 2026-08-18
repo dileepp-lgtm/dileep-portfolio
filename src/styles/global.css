@@ -117,7 +117,12 @@ h1,h2,h3,h4{line-height:1.08;letter-spacing:-.03em;font-weight:650}
   font-size:15px;font-weight:600;cursor:pointer;border:1px solid transparent;
   transition:transform .2s var(--ease),background .2s,box-shadow .2s,border-color .2s;white-space:nowrap}
 .btn:hover{transform:translateY(-2px)}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 35%,transparent)}
+/* same animated gradient as the headings (GradientText), on the solid CTA */
+.btn-primary{color:#fff;
+  background-image:linear-gradient(to right,var(--gt-stops));
+  background-size:300% 100%;background-repeat:repeat;
+  animation:gradient-text-pan var(--gt-speed,8s) ease-in-out infinite alternate;
+  box-shadow:0 8px 22px color-mix(in srgb,var(--accent) 35%,transparent)}
 .btn-ghost{background:var(--bg-card);color:var(--text);border-color:var(--border)}
 .btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
 
