@@ -988,6 +988,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 /* the trail fills the cover; isolate keeps its internal z-index:100 from
    competing with the fixed nav */
 .work-cover__trail{position:absolute;inset:0;z-index:1;isolation:isolate}
+/* Liquid Glass effect canvas fills the cover */
+.liquid-fill{position:absolute;inset:0}
+.liquid-fill canvas{display:block;width:100%;height:100%}
 /* the title sits above the flying images and lets the pointer through so the
    trail still tracks movement across the whole banner */
 /* title + filters centered in the (shorter) cover */
