@@ -909,17 +909,23 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     padding-top:calc(var(--nav-h) + 24px);
     padding-bottom:44px;
   }
-  /* home hero (mobile only): the base scale/anchor transform left a strip on the
-     right — fill the frame instead, keep the head near the top, and start the
-     copy around the middle so the top half of the portrait stays visible */
-  .hero2.has-photo .hero-photo{ transform:none; background-position:50% 12%; }
+  /* home hero (mobile only): the square photo covered the frame with no vertical
+     play (head glued to the top, sides cropped). Use contain so the whole
+     portrait shows head-uncut, nudge it down with a little air above, and start
+     the copy below the chin so the face has breathing room. */
+  .hero2.has-photo .hero-photo{
+    transform:none;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:50% 7%;
+  }
   .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
-  .hero2.has-photo .hero-copy{ margin-top:48svh; }
+  .hero2.has-photo .hero-copy{ margin-top:44svh; }
   /* clear over the face up top, darkening into a readable backing for the copy */
   .hero2.has-photo .hero-veil{
     background:linear-gradient(180deg,
-      rgba(4,7,15,0) 0%, rgba(4,7,15,0) 30%,
-      rgba(4,7,15,.6) 45%, rgba(4,7,15,.94) 62%, rgba(4,7,15,.99) 100%);
+      rgba(4,7,15,0) 0%, rgba(4,7,15,0) 40%,
+      rgba(4,7,15,.72) 56%, rgba(4,7,15,.98) 100%);
   }
   .hero2 h1{font-size:clamp(33px,9vw,46px);line-height:1.1}
   .hero-name{margin-bottom:16px;font-size:12.5px;letter-spacing:.12em}
