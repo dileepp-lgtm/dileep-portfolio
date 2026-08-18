@@ -909,15 +909,12 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     padding-top:calc(var(--nav-h) + 24px);
     padding-bottom:44px;
   }
-  /* home hero (mobile only): the square photo covered the frame with no vertical
-     play (head glued to the top, sides cropped). Use contain so the whole
-     portrait shows head-uncut, nudge it down with a little air above, and start
-     the copy below the chin so the face has breathing room. */
+  /* home hero (mobile): match the desktop treatment — cover + scale(.93) (from
+     the base rule) with the head anchored to the top, so the person fills the
+     frame prominently and uncut; copy starts below the face. */
   .hero2.has-photo .hero-photo{
-    transform:none;
-    background-size:contain;
-    background-repeat:no-repeat;
-    background-position:50% 7%;
+    background-size:cover;
+    background-position:50% top;
   }
   .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
   .hero2.has-photo .hero-copy{ margin-top:44svh; }
