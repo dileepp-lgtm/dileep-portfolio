@@ -542,8 +542,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
    strips revealed at the top and right are already near-black in the photo, so
    they blend into the hero's own background with no visible seam. */
 .hero-photo{position:absolute;inset:0;z-index:0;
-  background:url("/assets/img/hero.jpg") no-repeat left center;background-size:cover;
-  transform:scale(.88) translateY(-8%);transform-origin:left bottom}
+  background:url("/assets/img/hero.jpg") no-repeat left top;background-size:cover;
+  transform:scale(.88) translateY(4%);transform-origin:left bottom}
 /* the new portrait is already near-black on the right, so the veil is lighter
    than before — just enough for legibility while keeping the blue glow visible */
 .hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;
