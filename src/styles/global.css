@@ -915,9 +915,8 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
     transform:none;
     background-size:contain;
     background-repeat:no-repeat;
-    /* shift the portrait up so the empty dark-blue area above the head is
-       cropped out (no patch); head sits just below the nav */
-    background-position:50% top;
+    /* move the portrait down so the head has room (never cropped) */
+    background-position:50% 16%;
   }
   .hero2.has-photo{ padding-top:0; padding-bottom:36px; }
   .hero2.has-photo .hero-copy{ margin-top:44svh; }
