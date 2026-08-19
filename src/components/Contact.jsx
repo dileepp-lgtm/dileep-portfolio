@@ -25,7 +25,7 @@ export default function Contact() {
               {PROFILE.phone}
             </a>
             <a className="c-link" href={PROFILE.behance} target="_blank" rel="noopener">
-              <Icon><rect x="3" y="3" width="18" height="18" rx="4.5"/><path d="M9 7.8v8.4"/><path d="M9 7.8h2.7a2.1 2.1 0 0 1 0 4.2H9"/><path d="M9 12h3a2.1 2.1 0 0 1 0 4.2H9"/></Icon>
+              <Icon><path d="M3.4 8h3.3a2 2 0 0 1 0 4H3.4z"/><path d="M3.4 12h3.8a2.1 2.1 0 0 1 0 4.2H3.4z"/><path d="M14.9 8.4h4.3"/><path d="M13.4 14h6.8a3.4 3.4 0 1 0-.8 2.3"/></Icon>
               Behance
             </a>
             <a className="c-link" href={PROFILE.linkedin} target="_blank" rel="noopener">
