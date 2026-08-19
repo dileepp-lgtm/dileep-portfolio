@@ -1,6 +1,11 @@
 import { Link } from 'react-router-dom';
 import { PROFILE } from '../data/site.jsx';
 
+/* desktop line break: keep "of multiple products at Open Financial
+   Technologies." on its own line; on mobile the .hb break is hidden so the
+   text wraps naturally */
+const [subHead, subTail] = PROFILE.sub.split(/ (?=of multiple products)/);
+
 export default function Hero() {
   return (
     <header className="hero2 has-photo" id="home">
@@ -10,7 +15,7 @@ export default function Hero() {
         <div className="hero-copy">
           <div className="hero-name reveal"><span className="line" /> {PROFILE.name} — {PROFILE.role}</div>
           <h1 className="reveal d1">{PROFILE.headline[0]}<br /><em>{PROFILE.headline[1]}</em></h1>
-          <p className="hero-sub reveal d2">{PROFILE.sub}</p>
+          <p className="hero-sub reveal d2">{subHead}<br className="hb" />{' '}{subTail}</p>
           <div className="hero-facts reveal d2">
             <span className="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 21s-7-6.3-7-11a7 7 0 0 1 14 0c0 4.7-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg> {PROFILE.location}</span>
             <span className="f"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg> {PROFILE.company}</span>

@@ -743,6 +743,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .hero2 h1{font-size:clamp(40px,6.4vw,86px);font-weight:700;letter-spacing:-.045em;line-height:1.02;max-width:16ch;margin-bottom:calc(26px - var(--desc-fix))}
 .hero2 h1 em{font-style:normal;-webkit-text-fill-color:transparent}
 .hero-sub{font-size:clamp(15px,1.9vw,19px);color:var(--text-soft);max-width:640px;margin-bottom:30px}
+/* the manual hero-sub break only applies on desktop; mobile wraps naturally */
+.hero-sub .hb{display:none}
+@media(min-width:901px){.hero-sub .hb{display:inline}}
 .hero-facts{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin-bottom:36px;font-size:15px;color:var(--text-soft)}
 .hero-facts .f{display:inline-flex;align-items:center;gap:8px}
 .hero-facts .f svg{width:17px;height:17px;color:var(--accent)}
