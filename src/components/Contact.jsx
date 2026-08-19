@@ -12,8 +12,8 @@ export default function Contact() {
           <span className="eyebrow">Contact</span>
           <h2>Let's build meaningful digital experiences together.</h2>
           <p className="lead">
-            Available for Freelance &amp; Full-time. Open to senior visual design and
-            creative-direction roles, collaborations and select projects.
+            Open to senior visual design and creative-direction roles,
+            collaborations and select projects.
           </p>
           <div className="contact-links">
             <a className="c-link" href={`mailto:${PROFILE.email}`}>
