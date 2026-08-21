@@ -7,7 +7,7 @@ export const PROFILE = {
   phone: '+91 97423 20825',
   phoneHref: 'tel:+919742320825',
   behance: 'https://www.behance.net/dilee',
-  linkedin: 'https://www.linkedin.com/in/',
+  linkedin: 'https://www.linkedin.com/in/dileep-p-52992859/',
   resume: '/assets/files/Dileep-P-Resume.pdf',
   headline: ['Vivid yet cultivated.', 'Minimal but roaring.'],
   sub: '13+ years crafting brands, campaigns and product experiences across advertising and fintech — now shaping the visual identity of multiple products at Open Financial Technologies.'
