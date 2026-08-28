@@ -976,8 +976,9 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   .about-grid p{font-size:16.5px}
   .stat .num{font-size:clamp(32px,11vw,44px)}
 
-  /* --- expertise & tools read better 2-up than as a single lonely column --- */
-  .exp-grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  /* tools read fine 2-up; expertise now carries an icon + longer labels, so a
+     single full-width column reads cleaner and never crowds the screen edge */
+  .exp-grid{grid-template-columns:1fr;gap:12px}
   .exp{padding:18px 16px;font-size:15px}
   .tools-grid{grid-template-columns:repeat(2,1fr);gap:12px}
 
