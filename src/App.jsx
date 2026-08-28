@@ -81,7 +81,7 @@ export default function App() {
       });
     }
     if (window.BorderGlow) {
-      glow = window.BorderGlow.init('.dcard, .acard, .vcard, .agent-panel');
+      glow = window.BorderGlow.init('.dcard, .acard, .vcard, .agent-panel, .exp');
     }
     return () => {
       if (grid && grid.destroy) grid.destroy();

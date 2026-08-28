@@ -690,6 +690,10 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
 .glow-card > .dm,.glow-card > .db,
 .glow-card > .am,.glow-card > .ab,
 .glow-card > video,.glow-card > figcaption{position:relative;z-index:2}
+/* expertise tiles: tighter outer glow for the smaller boxes; keep the
+   number/icon/label above the running-border glow layers */
+.exp.glow-card{--glow-padding:22px}
+.exp.glow-card > *:not(.edge-light){position:relative;z-index:2}
 
 /* SplashCursor: full-viewport fluid overlay. z-index sits under the nav (100)
    and the modals (200/300), and it never intercepts pointer events. */
