@@ -201,6 +201,11 @@ h1,h2,h3,h4{line-height:1.08;letter-spacing:-.03em;font-weight:650}
 .exp:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent)}
 .exp .n{font-size:13px;font-weight:600;color:var(--text-faint);font-variant-numeric:tabular-nums}
 .exp:hover .n{color:var(--accent)}
+/* line icon per expertise, same language as the process/contact icons */
+.exp-ic{width:20px;height:20px;flex:0 0 auto;stroke:currentColor;fill:none;
+  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;color:var(--accent);
+  margin-left:-2px;transition:color .25s}
+.exp-label{flex:1}
 
 /* ---------- selected works gallery ---------- */
 .filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px}

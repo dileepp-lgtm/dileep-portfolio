@@ -10,8 +10,10 @@ export default function Expertise() {
         </div>
         <div className="exp-grid reveal">
           {EXPERTISE.map((e, i) => (
-            <div className="exp" key={e}>
-              <span className="n">{String(i + 1).padStart(2, '0')}</span> {e}
+            <div className="exp" key={e.name}>
+              <span className="n">{String(i + 1).padStart(2, '0')}</span>
+              <svg className="exp-ic" viewBox="0 0 24 24" aria-hidden="true">{e.icon}</svg>
+              <span className="exp-label">{e.name}</span>
             </div>
           ))}
         </div>

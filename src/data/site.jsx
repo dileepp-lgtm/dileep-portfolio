@@ -57,10 +57,36 @@ export const EXPERIENCE = [
 ];
 
 export const EXPERTISE = [
-  'Brand Identity', 'Marketing Campaigns', 'Product Branding', 'Creative Direction',
-  'Art Direction', 'Landing Pages', 'Website Design', 'Motion Graphics',
-  'Social Media Design', 'Email Marketing', 'Performance Creatives', 'Presentation Design',
-  'Print Design', 'Event Branding', 'AI-assisted Workflow'
+  { name: 'Brand Identity',
+    icon: <><path d="M6 4h12l3 5-9 11L3 9z"/><path d="M3 9h18M9 4 6 9l6 11 6-11-3-5"/></> },
+  { name: 'Marketing Campaigns',
+    icon: <><path d="M4 10v4h3l8 4V6l-8 4H4z"/><path d="M18.5 9.2a3.2 3.2 0 0 1 0 5.6"/></> },
+  { name: 'Product Branding',
+    icon: <><path d="M12 3 3 7.5V16l9 4.5 9-4.5V7.5z"/><path d="M3 7.5 12 12l9-4.5M12 12v8.5"/></> },
+  { name: 'Creative Direction',
+    icon: <><circle cx="12" cy="12" r="8.5"/><path d="m15.5 8.5-2.3 4.7-4.7 2.3 2.3-4.7z"/></> },
+  { name: 'Art Direction',
+    icon: <><path d="M12 3a9 9 0 1 0 0 18c1.3 0 2-.8 2-1.9 0-1.3 1-2.1 2.3-2.1H18a3 3 0 0 0 3-3c0-5-4-9-9-9z"/><circle cx="7.5" cy="11.5" r=".8"/><circle cx="12" cy="7.8" r=".8"/><circle cx="16" cy="11" r=".8"/></> },
+  { name: 'Landing Pages',
+    icon: <><rect x="3" y="4.5" width="18" height="15" rx="2"/><path d="M3 9h18M6.5 13h7M6.5 16h10"/></> },
+  { name: 'Website Design',
+    icon: <><rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M8 20h8M12 16.5V20"/><path d="m9.6 8.8-1.8 1.7 1.8 1.7M14.4 8.8l1.8 1.7-1.8 1.7"/></> },
+  { name: 'Motion Graphics',
+    icon: <><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M10 9.3 14.8 12 10 14.7z"/></> },
+  { name: 'Social Media Design',
+    icon: <><circle cx="6" cy="12" r="2.3"/><circle cx="17" cy="6" r="2.3"/><circle cx="17" cy="18" r="2.3"/><path d="m8 11 7-3.7M8 13l7 3.7"/></> },
+  { name: 'Email Marketing',
+    icon: <><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m4 7.5 8 6 8-6"/></> },
+  { name: 'Performance Creatives',
+    icon: <><path d="M4 19h16"/><path d="m4 15 4-4 3 3 6-7"/><path d="M17 7h3v3"/></> },
+  { name: 'Presentation Design',
+    icon: <><path d="M4 4h16"/><rect x="5" y="4.5" width="14" height="10" rx="1.5"/><path d="M12 14.5V17.5M12 17.5l-3 3M12 17.5l3 3"/></> },
+  { name: 'Print Design',
+    icon: <><path d="M7 8V4h10v4"/><rect x="4" y="8" width="16" height="7.5" rx="1.5"/><path d="M7 13h10v6H7z"/><circle cx="17" cy="11" r=".7"/></> },
+  { name: 'Event Branding',
+    icon: <><path d="M4 6.5h16v3.3a2.2 2.2 0 0 0 0 4.4v3.3H4v-3.3a2.2 2.2 0 0 0 0-4.4z"/><path d="M13.5 6.5v12"/></> },
+  { name: 'AI-assisted Workflow',
+    icon: <><path d="M11 3.5 12.7 8.3 17.5 10l-4.8 1.7L11 16.5 9.3 11.7 4.5 10l4.8-1.7z"/><path d="m18 14 .8 2 2 .8-2 .8-.8 2-.8-2-2-.8 2-.8z"/></> }
 ];
 
 export const PROCESS = [
