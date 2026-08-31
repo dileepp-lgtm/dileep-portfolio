@@ -125,7 +125,16 @@ export default function Agent() {
               aria-expanded={open} aria-controls="agent-panel"
               aria-label={open ? 'Close the portfolio assistant' : 'Open the portfolio assistant'}
               onClick={() => setPanel(!open)}>
-        <svg className="i-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 11.7a8.2 8.2 0 0 1-.9 3.7 8.3 8.3 0 0 1-7.4 4.6 8.2 8.2 0 0 1-3.7-.9L3.5 20.5l1.4-5a8.2 8.2 0 0 1-.9-3.7 8.3 8.3 0 0 1 4.6-7.4 8.2 8.2 0 0 1 3.7-.9h.5a8.3 8.3 0 0 1 7.7 7.7z"/><path d="M8.9 10.8h6.2M8.9 13.8h4"/></svg>
+        <svg className="i-logo" viewBox="0 0 789 880" aria-hidden="true">
+          <defs>
+            <linearGradient id="fabLogoGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stopColor="#6E9BF5" />
+              <stop offset="1" stopColor="#A87BF0" />
+            </linearGradient>
+          </defs>
+          <path fill="url(#fabLogoGrad)" fillRule="evenodd" d="M48 34 L440 34 A320 406 0 0 1 440 846 L210 846 L210 726 L48 726 Z M210 180 L432 180 A174 260 0 0 1 432 700 L210 700 Z" />
+          <rect fill="url(#fabLogoGrad)" x="328" y="360" width="160" height="160" />
+        </svg>
         <svg className="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
         <span className="agent-ping" />
       </button>

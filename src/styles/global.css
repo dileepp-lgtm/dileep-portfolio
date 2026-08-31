@@ -394,15 +394,17 @@ footer .wrap{display:flex;justify-content:space-between;align-items:center;flex-
   align-items:flex-end;gap:14px;pointer-events:none}
 .agent > *{pointer-events:auto}
 
-.agent-fab{order:2;width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;position:relative;
-  background:var(--accent);color:#fff;display:grid;place-items:center;
-  box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 45%,transparent),0 2px 6px rgba(0,0,0,.2);
+.agent-fab{order:2;width:58px;height:58px;border-radius:50%;border:1px solid var(--border);cursor:pointer;position:relative;
+  background:#fff;color:var(--accent);display:grid;place-items:center;
+  box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 32%,transparent),0 2px 6px rgba(0,0,0,.2);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .agent-fab:hover{transform:translateY(-3px) scale(1.04)}
 .agent-fab svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.6;
   stroke-linecap:round;stroke-linejoin:round;position:absolute;transition:opacity .2s,transform .3s var(--ease)}
+/* brand logo (closed state): fills, no stroke, a touch larger than the line icons */
+.agent-fab .i-logo{width:30px;height:33px;stroke:none;fill:none}
 .agent-fab .i-close{opacity:0;transform:rotate(-90deg) scale(.6)}
-.agent.open .agent-fab .i-chat{opacity:0;transform:rotate(90deg) scale(.6)}
+.agent.open .agent-fab .i-logo{opacity:0;transform:rotate(90deg) scale(.6)}
 .agent.open .agent-fab .i-close{opacity:1;transform:none}
 .agent-ping{position:absolute;top:4px;right:4px;width:11px;height:11px;border-radius:50%;
   background:#22c55e;border:2px solid var(--accent)}
