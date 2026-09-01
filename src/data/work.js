@@ -545,13 +545,6 @@ export const AGENCY = [
     "sub": "Brand Campaign"
   },
   {
-    "href": "https://www.behance.net/gallery/96685951/Wrogn",
-    "img": "https://mir-s3-cdn-cf.behance.net/projects/404/b25adc96685951.Y3JvcCw4NDgsNjYzLDM1LDQ2.jpg",
-    "alt": "Wrogn",
-    "title": "Wrogn",
-    "sub": "Fashion \u00b7 Campaign"
-  },
-  {
     "href": "https://www.behance.net/gallery/97024337/BlueStone_Social-Media-Post",
     "img": "https://mir-s3-cdn-cf.behance.net/projects/404/391cbb97024337.Y3JvcCwxMDE5LDc5Nyw2OCwxNjk.png",
     "alt": "BlueStone",
